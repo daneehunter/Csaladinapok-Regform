@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css?family=Cairo');
+
+* {
+	padding: 0;
+	margin: 0;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body {
+	background: linear-gradient(to right , #ffffffcc, #da0b2d);
+    font-family: 'Cairo', sans-serif;
+	margin: 0px;
+	width: 100vw;
+}
+
+/*Responsive kezdete */
+@media only screen and (max-width: 600px) {
+
+	.progressbar
+	{
+		width: 100%;
+		
+	}
+	.container .form-reg .progressbar li
+	{
+		font-size: 10px;
+	}
+	h1{
+		font-size: 25px;
+	}
+	.lead {
+		font-size: 13px;
+	}
+	.container img {
+		width: 80%;
+	}
+	.container .form-reg label:not(.check-box){
+		font-size: 1rem;
+	}
+  }
+
+  @media only screen and (max-width: 320px) {
+	body {
+	  width: 100%;
+	}
+	.progressbar
+	{
+		width: 100%;
+	}
+	.container .form-reg .progressbar li
+	{
+		font-size: 0.82rem;
+	}
+	h1{
+		font-size: 2rem;
+	}
+	.lead {
+		font-size: 1rem;
+	}
+	small{
+font-size: 0.9rem;
+	}
+	.container .form-reg label:not(.check-box){
+		font-size: 1rem;
+	}
+  }
+  /* Responsivitás vége */
+
+	#fozocsapatnev {
+		display: none;
+	}
+	#csfozocsapatnev {
+		display: none;
+	}
+	#csaladtag {
+		display: none;
+	}
+
+	#focicsapatnev {
+		display: none;
+	}
+	#csfocicsapatnev {
+		display: none;
+	}
+	#tobbemberigen{
+		display: none;
+	}
+
+
+/* Regisztrációs form */
+
+.form-reg {
+	margin: 100px auto;
+	text-align: center;
+	position: relative;
+}
+.form-reg fieldset, .form-reg .thank {
+	background-color: #fff;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0,0,0,0.4);
+	padding: 20px 30px;
+	width: 80%;
+	margin: 0 10%;
+	position: absolute;
+	margin-bottom: 30px; 
+}
+.form-reg fieldset:not(:first-of-type), .form-reg .thank {
+	display: none;
+}
+.form-reg .thank h1 {
+	margin: 50px auto;
+}
+.form-reg .fs-title {
+	font-size: 20px;
+	color: #333;
+	margin-bottom: 10px;
+}
+.form-reg .fs-subtitle {
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 20px;
+}
+.form-reg .progressbar {
+	margin-bottom: 30px;
+	overflow: hidden;
+	counter-reset: step;
+	
+}
+.form-reg .progressbar li {
+	list-style: none;
+	text-transform: uppercase;
+	width: 16.66%;
+	float: left;
+	position: relative;
+	font-size: 16px;
+    color: #fff;
+}
+.form-reg .progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	display: block;
+	color: #333;
+	font-weight: bold;
+	font-size: 16px;
+	background-color: #fff;
+	border-radius: 3px;
+	margin: 0 auto 5px;
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+.form-reg .progressbar li:after {
+	content: "";
+	width: 100%;
+	height: 5px;
+	background-color: #fff;
+	position: absolute;
+	left: -50%;
+	top: 12px;
+	z-index: -1;
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+.form-reg .progressbar li:first-child:after {
+	content: none;
+}
+.form-reg .progressbar li.active:before, 
+.form-reg .progressbar li.active:after {
+	background-color: #e74c3c;
+	color: #fff;
+}
+
+.form-reg .form-control , .form-reg select, .form-reg textarea {
+	padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 15px;
+    height: auto;
+}
+.form-reg label:not(.check-box) {
+	text-align: left;
+    width: 100%;
+    font-size: 16px;
+}
+.form-reg .check-box {
+	width: 20%;
+    float: right;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 1%;
+}
+.form-reg .action-button {
+	width: 100px;
+	background-color: #e74c3c;
+	color: #fff;
+	font-weight: bold;
+	border: 0 none;
+	border-radius: 1px;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+.form-reg .end-button
+{
+	width: 100px;
+	background-color: #e74c3c;
+	color: #fff;
+	font-weight: bold;
+	border: 0 none;
+	border-radius: 1px;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+.form-reg .action-button:hover,
+.form-reg .action-button:focus {
+	-webkit-box-shadow: 0 0 2px #fff, 0 0 3px #e74c3c;
+	   -moz-box-shadow: 0 0 2px #fff, 0 0 3px #e74c3c;
+			box-shadow: 0 0 2px #fff, 0 0 3px #e74c3c;
+}
+.form-reg .bg-info {
+	display: none;
+}
+
+.form-reg .end-button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.form-reg .action-button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+
+/* Regisztrációs form vége */

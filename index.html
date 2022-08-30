@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+	<title>Családinapok TESZT FORM</title>
+
+	<!-- Font -->
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<!-- Nice Reset library -->
+	<link rel="stylesheet" href="css/normalize.css" />
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+	<!--Form elej-->
+	<div class="container">
+			
+
+		<form action="" method="post" class="form-reg">
+
+			<ul class="progressbar">
+				<li class="active">GDPR</li>
+				<li>Tájékoztató</li>
+				<li>Regisztráció ellenőrzés</li>
+				<li>Adatok</li>
+				<li>Programok</li>
+				<li>Regisztráció</li>
+			</ul>
+
+			<fieldset>
+
+				<img src="img/logo.png" alt="tesztlogo" title="tesztlogo" class=" center-block" width="30%" />
+
+				<h1>Adatvédelmi&Kezelési nyilatkozat</h1>
+				<br>
+				<p class="lead">
+					teszt</p>
+				<input type="checkbox" onchange="checkbox2();" id="gdrpelfogadcheck" name="gdrpelfogad" value="Megismertem és elfogadom az
+					adatvédelmi&kezelési foglaltakat az adataim továbbítása céljából">
+				<small style="font-weight: bold;" for="gdrpelfogadcheck">Megismertem és elfogadom az
+					adatvédelmi&kezelési foglaltakat az adataim továbbítása céljából</small><br>
+				<input type="button" id=gdprelfogad value="Elfogadom" class="next action-button" />
+			</fieldset>
+
+			<fieldset>
+				<img src="img/logo.png" alt="tesztlogo" title="tesztlogo" class=" center-block" width="30%" />
+				<h1>Tájékoztató nyilatkozat</h1>
+				<br>
+				<p class="lead">teszt</p>
+				<input type="checkbox" onchange="checkbox();" id="tajelfogadcheck" name="tajelfogad" value="Megismertem és elfogadom az adat tájékoztató
+					foglaltakat az adataim továbbítása céljából">
+				<small style="font-weight: bold;" for="tajelfogadcheck">Megismertem és elfogadom az adat tájékoztató
+					foglaltakat az adataim továbbítása céljából</small><br>
+				<input type="button" value="Vissza" class="previous action-button" />
+				<input type="button" id="tajelfogad" value="Elfogadom" class="next action-button" />
+			</fieldset>
+			
+			<fieldset>
+				<h1>Ellenőrzés</h1>
+				<label>Törzsszám(Teszthez: 00000)</label>
+				<input type="number" name="customers" id="torzsszamcheckid" onkeyup="showCustomer(this.value)" placeholder="Törzsszám" class="form-control" required />
+				<div id="txtHint" style="color:red; font-weight: bold;"></div><br>
+				<input type="button" value="Vissza" class="previous action-button" />
+				<input type="button" name="next" id="torzsszamgomb" value="Következő" class="next action-button" />
+				
+
+			</fieldset>
+			
+			<fieldset>
+				<h1>Regisztrációs adatok</h1>
+				<!-- onclick="ShowAndHide()" -->
+				<button type="button" onclick="ShowAndHide()"><img src="img/information.png"></button>
+				<button type="button" onclick="ShowAndHideGDPR()"><img src="img/gdpr.png"></button>
+				<div id="kepMutatas" style="display: none;">
+					<p class="lead">teszt</p>
+				</div>
+				<div id="gdpr1" style="display: none;">
+					<p class="lead">teszt
+</p>
+				</div>
+				<h3 class="fs-subtitle"></h3>
+				<label>Vezetéknév</label>
+				<input type="text" name="v-nev" placeholder="Vezetéknév" class="form-control" required />
+				<label>Keresztnév</label>
+				<input type="text" name="k-nev" placeholder="Keresztnév" class="form-control" required />
+				<label>Póló méret:</label>
+				<select class="form-control" name="polomeret">
+					<option selected="XS">XS</option>
+					<option selected="S">S</option>
+					<option selected="M">M</option>
+					<option selected="L">L</option>
+					<option selected="XL">XL</option>
+					<option selected="XXL">XXL</option>
+					<option selected="XXXL">XXXL</option>
+				</select>
+				<label>Meghívott fők:</label>
+				<small class="form-text text-muted" style="color:red; font-weight: bold;">
+					információs üzenet
+				</small><br />
+				<small style="font-weight:bold; float:left;">Felnőtt:</small>
+				<input type="number" id="felnott" name="felnott" placeholder="Felnőtt" class="form-control"
+				onChange="{addEmber(); addEtel()}" />
+				<small style="font-weight:bold; float:left;">Gyerekek:</small>
+				<input type="number" id="lany" name="lany" placeholder="Lány" class="form-control"
+				onChange="{addEmber(); addEtel()}" />
+				<input type="number" id="fiu" name="fiu" placeholder="Fiú" class="form-control"
+				onChange="{addEmber(); addEtel()}" />
+				<label>Összesen veled együtt: <span id="osszPluszEgy"></span></label>
+				<label id="osszEmberFigy"> </label>
+				<label>Szeretnél több embert hozni, mint 3?</label>
+				<select onChange=" {displayDiv('tobbemberigen',this); addEmber()}" id="tobbember" name="tobbember"
+					class="form-control">
+					<option value="1"> Igen</option>
+					<option selected="" value="0"> Nem</option>
+				</select>
+				<div id="tobbemberigen">
+					<label>Indoklás:</label>
+					<input type="text" id="indoklas" name="tobbemberigen"
+						placeholder="Pl.: Szeretnél az összes gyermekem elhozni." class="form-control" />
+				</div>
+				<label>Dolgozik a cégnél veled egy háztartásban élő családtagod?</label>
+				<!-- onchange="displayDiv('csaladtag', this)"  -->
+				<select onChange=" {displayDiv('csaladtag',this); addEmber(); addEtel()}" name="csaladtagdolgozik" id="dolgozikcstag" class="form-control">
+					<option id="csaladtagigen" value="1"> Igen, dolgozik.</option>
+					<option id="csaladtagnem" selected="" value="0"> Nem dolgozik.</option>
+				</select>
+				<small class="form-text text-muted" style="color:red; font-weight: bold;">
+					információs üzenet
+				</small><br />
+				<div id="csaladtag">
+					<label>Vezetékneve</label>
+					<input type="text" name="csv-nev" placeholder="Vezetéknév" class="form-control" />
+					<label>Keresztneve</label>
+					<input type="text" name="csk-nev" placeholder="Keresztnév" class="form-control" />
+					<label>Törzsszáma</label>
+					<input type="number" name="cstorzsszam" placeholder="Törzsszám" class="form-control" />
+					<label>Póló méret:</label>
+					<select class="form-control" name="cspolomeret">
+						<option selected="XS">XS</option>
+						<option selected="XS">S</option>
+						<option selected="XS">M</option>
+						<option selected="XS">L</option>
+						<option selected="XS">XL</option>
+						<option selected="B">XXL</option>
+						<option selected="XS">XXXL</option>
+					</select>
+					<label>Focicsapatban való részvétel:</label>
+					<select onchange="displayDiv('csfocicsapatnev', this)" name="csfociresztvetel" class="form-control">
+						<option id="fociigen" value="1"> Igen részt veszek.</option>
+						<option id="focinem" selected="" value="0"> Nem veszek részt.</option>
+					</select>
+					<div id="csfocicsapatnev">
+						<label>Foci Csapatnév</label>
+						<input type="text" name="csfocicsapatnev" placeholder="Csapatnév" class="form-control" />
+					</div>
+					<label>Főzőcsapatban való részvétel:</label>
+					<!-- -->
+					<select onChange=" {displayDiv('csfozocsapatnev',this); addEtel()}" id="csfozoreszvetel"
+						name="csfozoreszvetel" class="form-control">
+						<option id="fozoigen" value="1"> Igen részt veszek.</option>
+						<option id="fozonem" selected="" value="0"> Nem veszek részt.</option>
+					</select>
+					<div id="csfozocsapatnev">
+						<label>Föző Csapatnév</label>
+						<input type="text" name="csfozocsapatnev" placeholder="Csapatnév" class="form-control" />
+					</div>
+				</div>
+				<input type="button" value="Vissza" class="previous action-button" />
+				<input type="button" name="next" id="bdisableember" value="Következő" class="next action-button" />
+			</fieldset>
+
+			<fieldset>
+				<h1>Programok</h1>
+				<button type="button" onclick="ShowAndHide2()"><img src="img/information.png"></button>
+				<button type="button" onclick="ShowAndHideGDPR2()"><img src="img/gdpr.png"></button>
+				<div id="kepMutatas2" style="display: none;">
+					<p class="lead">teszt</p>
+				</div>
+				<div id="gdpr2" style="display: none;">
+					<p class="lead">
+					teszt</p>
+				
+				</div>
+				<label>Focicsapatban való részvétel:</label>
+				<select onchange="displayDiv('focicsapatnev', this)" name="fociresztvetel" class="form-control">
+					<option id="fociigen" value="1"> Igen részt veszek.</option>
+					<option id="focinem" selected="" value="0"> Nem veszek részt.</option>
+				</select>
+				<div id="focicsapatnev">
+					<label>Foci Csapatnév</label>
+					<input type="text" name="focicsapatnev" placeholder="Csapatnév" class="form-control" />
+				</div>
+				<label>Főzőcsapatban való részvétel:</label>
+				<!-- -->
+				<select onChange=" {displayDiv('fozocsapatnev',this); addEtel()}" id="fozoreszvetel"
+					name="fozoreszvetel" class="form-control">
+					<option id="fozoigen" value="1"> Igen részt veszek.</option>
+					<option id="fozonem" selected="" value="0"> Nem veszek részt.</option>
+				</select>
+				<div id="fozocsapatnev">
+					<label>Föző Csapatnév</label>
+					<input type="text" name="fozocsapatnev" placeholder="Csapatnév" class="form-control" />
+				</div>
+				<label>Natúr csirke - saláta(adag)</label>
+				<input type="number" id="naturcsirke" name="amenu" placeholder="Natúr csirke - saláta"
+					class="form-control" onchange="addEtel();" />
+				<label>Rántott szelet- rizs- uborka(adag)</label>
+				<input type="number" id="rantottszelet" name="bmenu" placeholder="Rántott szelet- rizs- uborka"
+					class="form-control" onchange="addEtel();" />
+				<label>Marhapörkölt tarhonya- uborka(adag)</label>
+				<input type="number" id="marhaporkolt" name="cmenu" placeholder="Marhapörkölt tarhonya- uborka"
+					class="form-control" onchange="addEtel();" />
+				<label>Összesen rendelt ételt: <span id="osszRendelt"></span></label>
+				<label>Rendelhető ételek száma: <span id="osszRendelheto"></span> </label>
+				<input type="button" value="Vissza" class="previous action-button" />
+				<input type="button" id="bdisable" value="Tovább" class="next action-button" />
+			</fieldset>
+
+			<fieldset>
+				<img src="img/logo.png" alt="tesztlogo" title="tesztlogo" class=" center-block" width="30%" />
+				<button type="button" onclick="ShowAndHide3()"><img src="img/information.png"></button>
+				<button type="button" onclick="ShowAndHideGDPR3()"><img src="img/gdpr.png"></button>
+				<div id="kepMutatas3" style="display: none;">
+					<p class="lead">teszt</p>
+				</div>
+				<div id="gdpr3" style="display: none;">
+					<p class="lead">
+						teszt</p>
+					
+				</div>
+				<h1>Regisztráció Befejezése</h1>
+				<br>
+				<p class="lead">
+					A Regisztráció befejezéséhez nyomjon a 'Regisztráció' gombra, előtte olvassa át az adatait,hogy
+					minden megegyezik a valósággal.
+					Amennyiben szeretné lehetősége van kérni az E-mail címére egy emlékeztetőt az adatokról amit
+					későbbiekben vissza tud nézni.
+				</p>
+				<label>Email cím:</label>
+				<input type="email" name="email" placeholder="valami@valami.hu" class="form-control" />
+				<p class="lead" style="font-weight: bold;">.<br>
+				</p>
+				<input type="button" value="Vissza" class="previous action-button" />
+				<input type="submit" name="submit" onclick="teszt()" value="Regisztráció" class="end-button" />
+			</fieldset>
+		</form>
+				
+	</div>
+	<!-- Form Vége -->
+	<!--SCRIPT-->
+
+	<!-- Jquery Library -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<!-- Jquery Library -->
+	<script src="js/jquery-ui.min.js"></script>
+	<!-- Bootstrap FrameWork -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Main js Plugins File -->
+	<script src="js/plugins.js"></script>
+	<!--SAJÁT JAVASCRIPT-->
+	<script src="js/sajat.js"></script>
+
+
+</body>
+
+</html>
